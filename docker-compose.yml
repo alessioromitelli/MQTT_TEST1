@@ -1,0 +1,19 @@
+services:
+  db-postgres:
+    image: postgres:latest
+    container_name: chr-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: orchestrator
+    restart: unless-stopped
+
+  mailhog:
+    image: mailhog/mailhog
+    container_name: chr-mailhog
+    ports:
+      - "8025:8025"
+      - "1025:1025"
+    restart: unless-stopped
